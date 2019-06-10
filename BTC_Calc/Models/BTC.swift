@@ -21,12 +21,10 @@ struct BPI: Decodable {
 }
 
 struct USD: Decodable {
-    let symbol: String
     let rate: String
     let rateFloat: Float
     
     enum CodingKeys: String, CodingKey {
-        case symbol
         case rate
         case rateFloat = "rate_float"
     }

@@ -56,12 +56,12 @@ extension BTCController {
 }
 
 extension BTCController {
-    func convertBtc(amount: Float) -> Float {
+    func convertBtc(amount: Float, completion: @escaping (Float) -> Void) {
         var answer: Float = 0.0
         fetchHourlyPrice { (rate) in
             guard let rate = rate else { return }
             answer = (amount * rate.rateFloat)
+            completion(answer)
         }
-        return answer
     }
 }

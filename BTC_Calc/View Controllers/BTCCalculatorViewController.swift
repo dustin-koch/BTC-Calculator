@@ -16,12 +16,13 @@ class BTCCalculatorViewController: UIViewController {
     @IBOutlet weak var btcLabel: UILabel!
     @IBOutlet weak var btcTextField: UITextField!
     @IBOutlet weak var usdLabel: UILabel!
+    @IBOutlet weak var currentPriceLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
-
+    
     //MARK: - Actions
     @IBAction func usdToBtcTapped(_ sender: Any) {
         guard let usd = usdTextField.text,
@@ -29,14 +30,32 @@ class BTCCalculatorViewController: UIViewController {
         let floatConversion = (usd as NSString).floatValue
         BTCController.sharedInstance.convertUsd(amount: floatConversion) { (answer) in
             DispatchQueue.main.async {
-                self.btcLabel.text = String(answer)
+                self.btcLabel.text = String(format: "%.4f", answer)
             }
         }
-        
+        updateCurrentPrice()
     }
     @IBAction func btcToUsdTapped(_ sender: Any) {
+        guard let btc = btcTextField.text,
+            !btc.isEmpty else { return }
+        let floatConversion = (btc as NSString).floatValue
+        BTCController.sharedInstance.convertBtc(amount: floatConversion) { (answer) in
+            DispatchQueue.main.async {
+                self.usdLabel.text = String(format: "$%.02f", answer)
+            }
+        }
+        updateCurrentPrice()
     }
     @IBAction func cryTapped(_ sender: Any) {
     }
-
+    
+    func updateCurrentPrice() {
+        BTCController.sharedInstance.fetchHourlyPrice { (usd) in
+            DispatchQueue.main.async {
+                guard let usd = usd else { return }
+                self.currentPriceLabel.text = "Current BTC Price: $\(usd.rate)"
+            }
+        }
+    }
+    
 }//END OF VIEW CONTROLLER
