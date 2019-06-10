@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		CA187E3A22AEC01B00B0C81A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA187E3922AEC01B00B0C81A /* AppDelegate.swift */; };
-		CA187E3C22AEC01B00B0C81A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA187E3B22AEC01B00B0C81A /* ViewController.swift */; };
 		CA187E3F22AEC01B00B0C81A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA187E3D22AEC01B00B0C81A /* Main.storyboard */; };
 		CA187E4122AEC01C00B0C81A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA187E4022AEC01C00B0C81A /* Assets.xcassets */; };
 		CA187E4422AEC01C00B0C81A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA187E4222AEC01C00B0C81A /* LaunchScreen.storyboard */; };
+		CA187E4D22AEC0FF00B0C81A /* BTC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA187E4C22AEC0FF00B0C81A /* BTC.swift */; };
+		CA187E5222AEC21500B0C81A /* BTCController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA187E5122AEC21500B0C81A /* BTCController.swift */; };
+		CA187E5522AEC68600B0C81A /* BTCCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA187E5422AEC68600B0C81A /* BTCCalculatorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CA187E3622AEC01B00B0C81A /* BTC_Calc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTC_Calc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA187E3922AEC01B00B0C81A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CA187E3B22AEC01B00B0C81A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CA187E3E22AEC01B00B0C81A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CA187E4022AEC01C00B0C81A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA187E4322AEC01C00B0C81A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA187E4522AEC01C00B0C81A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA187E4C22AEC0FF00B0C81A /* BTC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTC.swift; sourceTree = "<group>"; };
+		CA187E5122AEC21500B0C81A /* BTCController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTCController.swift; sourceTree = "<group>"; };
+		CA187E5422AEC68600B0C81A /* BTCCalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTCCalculatorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +58,48 @@
 		CA187E3822AEC01B00B0C81A /* BTC_Calc */ = {
 			isa = PBXGroup;
 			children = (
-				CA187E3922AEC01B00B0C81A /* AppDelegate.swift */,
-				CA187E3B22AEC01B00B0C81A /* ViewController.swift */,
 				CA187E3D22AEC01B00B0C81A /* Main.storyboard */,
+				CA187E5622AEC68E00B0C81A /* View Controllers */,
+				CA187E4E22AEC10300B0C81A /* Models */,
+				CA187E5322AEC22000B0C81A /* Model Controllers */,
+				CA187E4B22AEC03C00B0C81A /* Resources */,
+			);
+			path = BTC_Calc;
+			sourceTree = "<group>";
+		};
+		CA187E4B22AEC03C00B0C81A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CA187E3922AEC01B00B0C81A /* AppDelegate.swift */,
 				CA187E4022AEC01C00B0C81A /* Assets.xcassets */,
 				CA187E4222AEC01C00B0C81A /* LaunchScreen.storyboard */,
 				CA187E4522AEC01C00B0C81A /* Info.plist */,
 			);
-			path = BTC_Calc;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CA187E4E22AEC10300B0C81A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CA187E4C22AEC0FF00B0C81A /* BTC.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CA187E5322AEC22000B0C81A /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CA187E5122AEC21500B0C81A /* BTCController.swift */,
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		CA187E5622AEC68E00B0C81A /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CA187E5422AEC68600B0C81A /* BTCCalculatorViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +173,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA187E3C22AEC01B00B0C81A /* ViewController.swift in Sources */,
 				CA187E3A22AEC01B00B0C81A /* AppDelegate.swift in Sources */,
+				CA187E4D22AEC0FF00B0C81A /* BTC.swift in Sources */,
+				CA187E5522AEC68600B0C81A /* BTCCalculatorViewController.swift in Sources */,
+				CA187E5222AEC21500B0C81A /* BTCController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +324,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D445CT62ZR;
-				INFOPLIST_FILE = BTC_Calc/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/BTC_Calc/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,7 +342,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D445CT62ZR;
-				INFOPLIST_FILE = BTC_Calc/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/BTC_Calc/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
