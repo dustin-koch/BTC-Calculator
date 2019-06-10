@@ -63,6 +63,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="laG-nH-42a">
                                         <rect key="frame" x="131.5" y="115.5" width="101" height="30"/>
                                         <state key="normal" title="Tap to Convert"/>
+                                        <connections>
+                                            <action selector="usdToBtcTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="URM-xP-puZ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -117,6 +120,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHb-h8-vhn">
                                         <rect key="frame" x="131.5" y="115.5" width="101" height="30"/>
                                         <state key="normal" title="Tap to Convert"/>
+                                        <connections>
+                                            <action selector="btcToUsdTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KqL-iN-TSd"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -139,6 +145,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n5U-p7-hbl">
                                 <rect key="frame" x="171.5" y="610" width="71" height="30"/>
                                 <state key="normal" title="Tap to Cry"/>
+                                <connections>
+                                    <action selector="cryTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rfz-fp-vy6"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -161,6 +170,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="btcLabel" destination="OIt-JC-X0v" id="l38-3I-JVa"/>
+                        <outlet property="btcTextField" destination="FmM-JB-CG9" id="7Pk-Ng-G7k"/>
+                        <outlet property="usdLabel" destination="boE-Gf-dSZ" id="9zz-Zm-okb"/>
+                        <outlet property="usdTextField" destination="wig-cw-FPh" id="woR-4U-yBK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

@@ -20,26 +20,48 @@ class BTCController {
     
     
     //MARK: - CRUD Functions
-    func fetchHourlyPrice(completion: @escaping (Bool) -> Void) {
-        guard let url = URL(string: exchangeURL) else { completion(false); return }
+    func fetchHourlyPrice(completion: @escaping (USD?) -> Void) {
+        guard let url = URL(string: exchangeURL) else { completion(nil); return }
         URLSession.shared.dataTask(with: url) { (data, _, error) in
             if let error = error {
                 print(error.localizedDescription)
-                completion(false)
+                completion(nil)
                 return
             }
-            guard let data = data else { completion(false); return }
+            guard let data = data else { completion(nil); return }
             let jsonDecoder = JSONDecoder()
             do {
                 let topLevelDictionary = try jsonDecoder.decode(TopLevelJSONDictionary.self, from: data)
                 let usd = topLevelDictionary.bpi.usd
                 self.usdInfo = usd
-                completion(true)
+                completion(usd)
             } catch {
                 print(error.localizedDescription)
-                completion(false)
+                completion(nil)
                 return
             }
         }.resume()
     }
 }//END OF CLASS
+
+extension BTCController {
+    func convertUsd(amount: Float, completion: @escaping (Float) -> Void){
+        var answer: Float = 0.0
+        fetchHourlyPrice { (rate) in
+            guard let rate = rate else { return }
+            answer = (amount / rate.rateFloat)
+            completion(answer)
+        }
+    }
+}
+
+extension BTCController {
+    func convertBtc(amount: Float) -> Float {
+        var answer: Float = 0.0
+        fetchHourlyPrice { (rate) in
+            guard let rate = rate else { return }
+            answer = (amount * rate.rateFloat)
+        }
+        return answer
+    }
+}

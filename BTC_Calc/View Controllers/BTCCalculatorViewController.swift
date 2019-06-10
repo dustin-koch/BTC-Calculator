@@ -9,22 +9,34 @@
 import UIKit
 
 class BTCCalculatorViewController: UIViewController {
-
+    
+    //MARK: - Outlets
+    
+    @IBOutlet weak var usdTextField: UITextField!
+    @IBOutlet weak var btcLabel: UILabel!
+    @IBOutlet weak var btcTextField: UITextField!
+    @IBOutlet weak var usdLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //MARK: - Actions
+    @IBAction func usdToBtcTapped(_ sender: Any) {
+        guard let usd = usdTextField.text,
+            !usd.isEmpty else { return }
+        let floatConversion = (usd as NSString).floatValue
+        BTCController.sharedInstance.convertUsd(amount: floatConversion) { (answer) in
+            DispatchQueue.main.async {
+                self.btcLabel.text = String(answer)
+            }
+        }
+        
     }
-    */
+    @IBAction func btcToUsdTapped(_ sender: Any) {
+    }
+    @IBAction func cryTapped(_ sender: Any) {
+    }
 
-}
+}//END OF VIEW CONTROLLER
