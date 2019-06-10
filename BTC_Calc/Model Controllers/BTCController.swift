@@ -17,6 +17,7 @@ class BTCController {
     //MARK: - Properties
     var usdInfo: USD?
     let exchangeURL = "https://api.coindesk.com/v1/bpi/currentprice.json"
+    let oldValue: Float = 13.5
     
     
     //MARK: - CRUD Functions

@@ -47,6 +47,7 @@ class BTCCalculatorViewController: UIViewController {
         updateCurrentPrice()
     }
     @IBAction func cryTapped(_ sender: Any) {
+        presentSimpleInputAlert(title: "What if you decided to HODL", message: "Enter a hypothetical investment from Jan 2013")
     }
     
     func updateCurrentPrice() {
@@ -59,3 +60,32 @@ class BTCCalculatorViewController: UIViewController {
     }
     
 }//END OF VIEW CONTROLLER
+
+extension BTCCalculatorViewController {
+    func presentSimpleInputAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        //Creating two text fields
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Enter initial investment in USD"
+        }
+        //Create actions
+        let dismissAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let convertAction = UIAlertAction(title: "Convert Value", style: .default) { (_) in
+            guard let investment = alertController.textFields?[0].text,
+                !investment.isEmpty else { return }
+            let floatInvestment = (investment as NSString).floatValue
+            BTCController.sharedInstance.fetchHourlyPrice(completion: { (usd) in
+                DispatchQueue.main.async {
+                    guard let usd = usd else { return }
+                    let multiplier = usd.rateFloat / BTCController.sharedInstance.oldValue
+                    let answerString = String(format: "$%.02f", floatInvestment * multiplier)
+                    self.currentPriceLabel.text = "Your $\(investment) investment would be\nworth \(answerString) today!"
+                }
+            })
+        }
+        //Add actions/present
+        alertController.addAction(dismissAction)
+        alertController.addAction(convertAction)
+        self.present(alertController, animated: true)
+    }
+}
